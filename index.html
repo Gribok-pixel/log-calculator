@@ -1,0 +1,97 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор раскроя бревна</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f8cff">
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- Левая часть: круг -->
+            <div class="circle-wrapper">
+                <svg id="circleSvg">
+                    <circle 
+                        id="logCircle"
+                        cx="0"
+                        cy="0"
+                        r="160">
+                    </circle>
+                    <g id="boardsLayer"></g>
+                </svg>
+                <!-- <div class="stats">
+                    <span>📐 Диаметр круга: <strong id="diameterDisplay">0</strong> мм</span>
+                    <span>📏 Досок в круге: <strong id="countDisplay">0</strong></span>
+                </div> -->
+                <div class="stats">
+                    <div>
+                        📐 Диаметр:
+                        <strong id="diameterDisplay">320</strong>
+                        <span id="logVolumeDisplay" style="color: #7f8c8d; font-size: 0.8rem;">
+                            (0.48 м³)
+                        </span>
+                    </div>
+
+                    <div>
+                        📊 Выход %:
+                        <strong id="efficiencyDisplay">0</strong>
+                    </div>
+
+                    <div>
+                        📏 Досок:
+                        <strong id="countDisplay">0</strong>
+                    </div>
+                    <div>
+                        📦 Досок м³:
+                        <strong id="boardsVolumeDisplay">0.00</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая часть: панель с досками -->
+            <div class="sidebar">
+                <h2>📦 Доски</h2>
+                <p class="hint">Перетащите в круг</p>
+                <!-- <div class="board-list" id="boardList"> -->
+                    <!-- Доски будут добавлены через JS -->
+                <!-- </div> -->
+                <div class="board-scroll-area">
+
+                    <div class="board-list" id="boardList">
+                        <!-- Доски будут добавлены через JS -->
+                    </div>
+
+                    <div class="scroll-zone">
+                        <div class="scroll-thumb"></div>
+                    </div>
+
+                </div>
+                <div class="settings">
+                    <h3>⚙ Настройки</h3>
+
+                    <div class="settings-row">
+                        <div class="settings-group">
+                            <label for="diameterInput">Диаметр</label>
+                            <input id="diameterInput" type="number" value="320">
+                        </div>
+                        
+                        <div class="settings-group">
+                            <label for="gapInput">Зазор</label>
+                            <input id="gapInput" type="number" value="4" step="0.5">
+                        </div>
+                        
+                        <button id="applySettings" class="apply-btn">
+                            ✓
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="main.js"></script>
+</body>
+</html>

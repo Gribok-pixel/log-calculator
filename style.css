@@ -1,0 +1,536 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px; */
+}
+
+.container {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    max-height: 900px;
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Левая часть с кругом */
+.circle-wrapper {
+    flex: 1;
+    position: relative;
+    background: #fafbfc;
+    border-radius: 16px;
+    border: 1px solid #e9ecf0;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    z-index: 1;
+}
+
+#circleSvg {
+    width:100%;
+    height: 100%;
+    background:white;
+    overflow:visible;
+
+    touch-action: none;
+    z-index: 2;
+}
+
+#circleSvg:active {
+    cursor:grabbing;
+}
+
+
+/* бревно */
+#logCircle {
+    fill:#ffffff;
+    stroke:#000000;
+    stroke-width:1;
+}
+
+.stats {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:4px 20px;
+
+    padding:8px;
+
+    background:#f8f9fa;
+
+    border-radius:
+        0 0 12px 12px;
+
+    font-size:0.9rem;
+
+    color:#2c3e50;
+
+    border-top:
+        1px solid #e9ecf0;
+}
+
+
+.stats strong {
+    color:#1a2634;
+}
+
+
+
+#boardsLayer .board {
+    fill: #f5b859;
+    stroke:none;
+    stroke-width:1;
+}
+
+.boardLabel {
+    fill:#4b2b12;
+    font-size: 12px;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+.boardObject:hover .board {
+    fill: #6dafff;
+}
+
+.boardObject {
+    cursor: move;
+    pointer-events: all;
+}
+#boardsLayer .boardObject.collision .board{
+    /* fill:#ff7a7a !important; */
+    stroke:#d10000 !important;
+}
+
+
+/* Правая панель */
+.sidebar {
+    width: 260px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 4px;
+    z-index: 0;
+}
+
+.sidebar h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1a2634;
+}
+
+.sidebar .hint {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    /* margin-bottom: 8px; */
+}
+
+/* .board-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+
+    scrollbar-width: thin;
+    scrollbar-color: #b8c8dd transparent;
+
+    touch-action: pan-y;
+} */
+ .board-scroll-area {
+    display: flex;
+    flex: 1;
+    /* min-height: 100%; */
+    max-height: 18vh;
+    gap: 6px;
+
+    background: #d4dce3;
+    border: 1px solid #e9ecf0;
+    border-radius: 14px;
+
+    box-shadow:
+        inset 0 1px 2px rgba(0,0,0,0.03);
+}
+
+
+.board-list {
+    flex: 1;
+    overflow-y: auto;
+    min-width: 0;
+    padding: 8px 2px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    /* скрываем родной */
+    scrollbar-width: none;
+}
+
+.board-list::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* широкая зона справа */
+.scroll-zone {
+    width: 34px;
+    background: #f3f5f8;
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    margin: 4px 4px 4px 0px;
+    padding: 4px;
+
+    touch-action: none;
+}
+
+
+.scroll-thumb {
+    width: 22px;
+    height: 50px;
+
+    background: #aebed3;
+    border-radius: 10px;
+}
+
+
+
+.board-item {
+    margin: 0 2px;
+    padding: 10px 14px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 2px solid #e9ecf0;
+    cursor: grab;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #1a2634;
+    /* transition: all 0.15s; */
+
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* #boardsLayer .board {
+    fill: #7eb6ff;
+    stroke: #1d4f96;
+    stroke-width: 1;
+} */
+
+.board-item:hover {
+    background: #eef1f5;
+    border-color: #b8c8dd;
+}
+
+.board-item:active {
+    cursor: grabbing;
+    opacity: 0.6;
+}
+
+.board-item .size {
+    font-weight: 600;
+}
+
+.board-item .badge {
+    font-size: 0.7rem;
+    background: #dde3ea;
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: #2c3e50;
+}
+.board-item:active {
+    transform: scale(0.95);
+}
+
+/* Индикатор long press */
+.board-item.long-press-active {
+    transform: scale(0.95);
+    background: #e3f2fd;
+    border-color: #2196f3;
+}
+
+/* Прогресс-бар long press (опционально) */
+.long-press-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #2196f3;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.board-item.long-press-progress-active .long-press-progress {
+    width: 100%;
+    transition: width 0.5s linear;
+}
+
+
+
+.controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.controls button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: 0.15s;
+    background: #f0f2f5;
+    color: #2c3e50;
+}
+
+.controls button:hover {
+    background: #e4e8ed;
+}
+
+#clearBtn {
+    background: #fee8e8;
+    color: #b33;
+}
+
+#clearBtn:hover {
+    background: #fdd5d5;
+}
+
+.info {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    padding: 8px 0;
+    border-top: 1px solid #e9ecf0;
+    margin-top: auto;
+}
+
+.info p {
+    margin: 4px 0;
+}
+
+.settings {
+    flex-shrink: 0;
+    background:#f8f9fa;
+    border-radius:12px;
+    padding: 12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    z-index: 0;
+}
+
+
+
+
+.settings h3 {
+    font-size:1rem;
+}
+
+/* .settings label {
+    display:flex;
+    flex-direction:column;
+    font-size:0.8rem;
+    color:#555;
+}
+
+.settings input {
+    margin-top:4px;
+    padding:6px;
+    border-radius:8px;
+    border:1px solid #ddd;
+}
+
+#applySettings {
+    padding:8px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight: 600;
+} */
+
+/* Ряд с настройками */
+.settings-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    width: 100%;
+}
+
+/* Группа (лейбл + инпут) */
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0; /* Предотвращает переполнение */
+}
+
+.settings-group label {
+    font-size: 0.7rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.settings-group input {
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1.5px solid #e0e4e8;
+    font-size: 0.9rem;
+    width: 100%;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: white;
+    color: #1a2634;
+    font-weight: 500;
+}
+
+.settings-group input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.settings-group input:hover {
+    border-color: #b8c8dd;
+}
+
+/* Кнопка "Применить" */
+.apply-btn {
+    padding: 6px 14px;
+    height: 34px; /* Высота как у инпутов */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #4a90d9;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.apply-btn:hover {
+    background: #357abd;
+}
+
+.apply-btn:active {
+    transform: scale(0.95);
+}
+
+/* Альтернативный стиль кнопки с текстом */
+.apply-btn-text {
+    padding: 6px 16px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #4a90d9;
+    color: white;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.apply-btn-text:hover {
+    background: #357abd;
+}
+
+.apply-btn-text:active {
+    transform: scale(0.95);
+}
+
+
+
+
+.rotateButton path {
+    fill: #4a5568;
+}
+
+.rotateButton:hover path {
+    fill: #16a34a;
+}
+
+.removeButton{
+    fill:#fff;
+    cursor:pointer;
+}
+.removeButton path {
+    fill: #4a5568;
+    stroke:#d33;
+    stroke-width:1;
+}
+
+.removeButton:hover path {
+    fill: #dc2626;
+}
+
+.rotateButton,
+.removeButton {
+    cursor: pointer;
+}
+
+/* Адаптив */
+@media (max-width: 800px) {
+    .container {
+        flex-direction: column;
+        max-height: none;
+        padding: 4px 12px;
+    }
+    .sidebar {
+        width: 100%;
+        min-width: 0;
+    }
+    .board-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        /* max-height: 148px; */
+        height: 100%;
+        overflow-y: auto;
+    }
+    .board-item {
+        flex: 1;
+        min-width: 100%;
+    }
+}
