@@ -1,4 +1,4 @@
-const CACHE_NAME = "log-calculator-v3";
+const CACHE_NAME = "log-calculator-v4";
 
 const FILES_TO_CACHE = [
     "./",

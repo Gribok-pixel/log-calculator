@@ -6,92 +6,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Калькулятор раскроя бревна</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./pilov/pilov.css">
+    <link rel="stylesheet" href="./raschet/raschet.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4f8cff">
 </head>
 <body>
     <div id="app">
-        <div class="container">
-            <!-- Левая часть: круг -->
-            <div class="circle-wrapper">
-                <svg id="circleSvg">
-                    <circle 
-                        id="logCircle"
-                        cx="0"
-                        cy="0"
-                        r="160">
-                    </circle>
-                    <g id="boardsLayer"></g>
-                </svg>
-                <!-- <div class="stats">
-                    <span>📐 Диаметр круга: <strong id="diameterDisplay">0</strong> мм</span>
-                    <span>📏 Досок в круге: <strong id="countDisplay">0</strong></span>
-                </div> -->
-                <div class="stats">
-                    <div>
-                        📐 Диаметр:
-                        <strong id="diameterDisplay">320</strong>
-                        <span id="logVolumeDisplay" style="color: #7f8c8d; font-size: 0.8rem;">
-                            (0.48 м³)
-                        </span>
-                    </div>
 
-                    <div>
-                        📊 Выход %:
-                        <strong id="efficiencyDisplay">0</strong>
-                    </div>
+        <!-- Страницы -->
+        <div class="page-content container1 active" id="page-rasp">
+            <div class="container">
+                <!-- Левая часть: круг -->
+                <div class="circle-wrapper">
+                    <svg id="circleSvg">
+                        <circle 
+                            id="logCircle"
+                            cx="0"
+                            cy="0"
+                            r="160">
+                        </circle>
+                        <g id="boardsLayer"></g>
+                    </svg>
+                    <!-- <div class="stats">
+                        <span>📐 Диаметр круга: <strong id="diameterDisplay">0</strong> мм</span>
+                        <span>📏 Досок в круге: <strong id="countDisplay">0</strong></span>
+                    </div> -->
+                    <div class="stats">
+                        <div>
+                            📐 Брус:
+                            <strong id="diameterDisplay">320</strong>
+                            <span id="logVolumeDisplay" style="color: #7f8c8d; font-size: 0.8rem;">
+                                (0.48 м³)
+                            </span>
+                        </div>
 
-                    <div>
-                        📏 Досок:
-                        <strong id="countDisplay">0</strong>
-                    </div>
-                    <div>
-                        📦 Досок м³:
-                        <strong id="boardsVolumeDisplay">0.00</strong>
+                        <div>
+                            📊 Выход %:
+                            <strong id="efficiencyDisplay">0</strong>
+                        </div>
+
+                        <div>
+                            📏 Досок:
+                            <strong id="countDisplay">0</strong>
+                        </div>
+                        <div>
+                            📦 Досок м³:
+                            <strong id="boardsVolumeDisplay">0.00</strong>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Правая часть: панель с досками -->
-            <div class="sidebar">
-                <h2>📦 Доски</h2>
-                <p class="hint">Перетащите в круг</p>
-                <!-- <div class="board-list" id="boardList"> -->
-                    <!-- Доски будут добавлены через JS -->
-                <!-- </div> -->
-                <div class="board-scroll-area">
-
-                    <div class="board-list" id="boardList">
+                <!-- Правая часть: панель с досками -->
+                <div class="sidebar">
+                    <h2>📦 Доски</h2>
+                    <p class="hint">Перетащите в круг</p>
+                    <!-- <div class="board-list" id="boardList"> -->
                         <!-- Доски будут добавлены через JS -->
-                    </div>
+                    <!-- </div> -->
+                    <div class="board-scroll-area">
 
-                    <div class="scroll-zone">
-                        <div class="scroll-thumb"></div>
-                    </div>
-
-                </div>
-                <div class="settings">
-                    <h3>⚙ Настройки</h3>
-
-                    <div class="settings-row">
-                        <div class="settings-group">
-                            <label for="diameterInput">Диаметр</label>
-                            <input id="diameterInput" type="number" value="320">
+                        <div class="board-list" id="boardList">
+                            <!-- Доски будут добавлены через JS -->
                         </div>
-                        
-                        <div class="settings-group">
-                            <label for="gapInput">Зазор</label>
-                            <input id="gapInput" type="number" value="4" step="0.5">
+
+                        <div class="scroll-zone">
+                            <div class="scroll-thumb"></div>
                         </div>
-                        
-                        <button id="applySettings" class="apply-btn">
-                            ✓
-                        </button>
+
+                    </div>
+                    <div class="settings">
+                        <h3>⚙ Настройки</h3>
+
+                        <div class="settings-row">
+                            <div class="settings-group">
+                                <label for="diameterInput">Диаметр</label>
+                                <input id="diameterInput" type="number" value="320">
+                            </div>
+                            
+                            <div class="settings-group">
+                                <label for="gapInput">Зазор</label>
+                                <input id="gapInput" type="number" value="4" step="0.5">
+                            </div>
+                            
+                            <button id="applySettings" class="apply-btn">
+                                ✓
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Страница: Пиловочник -->
+        <div class="page-content" id="page-pilov">
+            <!-- <div class="page-placeholder">
+                <h2>🪵 Пиловочник</h2>
+                <p>Страница в разработке</p>
+            </div> -->
+
+            <div class="pilov-container">
+                <!-- Метаданные - минимальная высота -->
+                <div class="pilov-meta">
+                    <div class="meta-group">
+                        <label>Имя</label>
+                        <input type="text" id="pilovName" class="pilov-input">
+                    </div>
+                    <div class="meta-group">
+                        <label>Машина</label>
+                        <input type="text" id="pilovCarNumber" class="pilov-input">
+                    </div>
+                    <div class="meta-group">
+                        <label>Дата</label>
+                        <input type="date" id="pilovDate" class="pilov-input">
+                    </div>
+                    <div class="pilov-stats">
+                        <div class="stat-box">
+                            <span class="stat-label">Кол-во</span>
+                            <span class="stat-value" id="pilovTotalCount">0</span>
+                        </div>
+                        <div class="stat-box primary">
+                            <span class="stat-label">Объем</span>
+                            <span class="stat-value" id="pilovTotalVolume">0.000</span>
+                            <span class="stat-unit">м³</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Таблица - занимает всё свободное место -->
+                <div class="pilov-table-wrapper">
+                    <table class="pilov-table">
+                        <thead>
+                            <tr>
+                                <th>Диаметр</th>
+                                <th>Объем</th>
+                                <th>Кол-во</th>
+                                <th>Итого</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="pilovTableBody"></tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"><strong>ВСЕГО:</strong></td>
+                                <td id="pilovFooterCount"><strong>0</strong></td>
+                                <td id="pilovFooterVolume"><strong>0.000</strong></td>
+                                <td></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <!-- Кнопки - минимальная высота, только нужные -->
+                <div class="pilov-actions">
+                    <button class="pilov-action-btn danger" id="pilovReset">🔄 Сброс</button>
+                    <button class="pilov-action-btn primary" id="pilovSave">📄 PDF</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="page-content" id="page-raschet" style="display: none;">
+            <div class="page-placeholder">
+                <h2>📊 Расчет доски</h2>
+                <p>Страница в разработке</p>
+            </div>
+        </div> -->
+
+        <!-- Страница: Расчет доски -->
+        <div class="page-content" id="page-raschet">
+            <div class="raschet-container">
+                <!-- Метаданные -->
+                <div class="raschet-meta">
+                    <div class="meta-group">
+                        <label>📋 Заказчик</label>
+                        <input type="text" id="raschetClient" placeholder="Иванов И.И." class="raschet-input">
+                    </div>
+                    <div class="meta-group">
+                        <label>📅 Дата</label>
+                        <input type="date" id="raschetDate" class="raschet-input">
+                    </div>
+                    <div class="raschet-stats">
+                        <div class="stat-box">
+                            <span class="stat-label">Позиций</span>
+                            <span class="stat-value" id="raschetTotalItems">0</span>
+                        </div>
+                        <div class="stat-box primary">
+                            <span class="stat-label">Всего досок</span>
+                            <span class="stat-value" id="raschetTotalCount">0</span>
+                        </div>
+                        <div class="stat-box primary">
+                            <span class="stat-label">Объем</span>
+                            <span class="stat-value" id="raschetTotalVolume">0.000</span>
+                            <span class="stat-unit">м³</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Список досок с группировкой -->
+                <div class="raschet-list-wrapper" id="raschetListWrapper">
+                    <!-- Генерируется JS -->
+                </div>
+
+                <!-- Кнопки действий -->
+                <div class="raschet-actions">
+                    <button class="raschet-action-btn danger" id="raschetClearAll">🗑 Очистить все</button>
+                    <button class="raschet-action-btn primary" id="raschetSavePDF">📄 PDF</button>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
+    <script type="module">
+        // Делаем функции инициализации доступными глобально
+        import { initPilovnik } from './pilov/pilov.js';
+        import { initRaschet } from './raschet/raschet.js';
+        
+        window.initPilovnik = initPilovnik;
+        window.initRaschet = initRaschet;
+        
+        console.log('✅ Страницы зарегистрированы');
+        // Проверка классов
+        document.querySelectorAll('.page-content').forEach(p => {
+            console.log(p.id, p.classList.contains('active'), p.style.display);
+        });
+    </script>
+    <script type="module" src="menu/menu.js"></script>
     <script type="module" src="main.js"></script>
+    <script type="module" src="pilov/pilov.js"></script>
+    <script type="module" src="raschet/raschet.js"></script>
 </body>
 </html>

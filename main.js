@@ -7,6 +7,11 @@ import {
 } from './board.js';
 import { hasCollision } from './collision.js';
 import { setupUI, updateStats, setupScrollbar, updateLogVolumeUI } from './ui.js';
+import menu from './menu/menu.js';
+// import { initPilovnik } from './pilov/pilov.js';
+// import { initRaschet } from './raschet/raschet.js';
+
+
 
 // Инициализация
 const svg = document.getElementById("circleSvg");
@@ -298,3 +303,14 @@ if ("serviceWorker" in navigator) {
 
 // Начальное обновление статистики
 updateStats(boards, diameter);
+// initPilovnik()
+// initRaschet()
+
+// Подписаться на изменение страницы
+menu.setOnPageChange((page) => {
+    console.log('Страница изменена:', page);
+    // Здесь можно добавить дополнительную логику
+});
+
+// Для доступа к меню из любого места
+window.menu = menu;

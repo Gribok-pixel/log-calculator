@@ -1,0 +1,63 @@
+<!-- pages/pilov.html -->
+<div id="page-pilov" class="page-content" style="display: none;">
+    <div class="pilov-header">
+        <div class="pilov-meta">
+            <div class="meta-group">
+                <label>📋 Имя/Бригада</label>
+                <input type="text" id="pilovName" placeholder="Иванов И.И." class="pilov-input">
+            </div>
+            <div class="meta-group">
+                <label>🔢 Номер машины</label>
+                <input type="text" id="pilovCarNumber" placeholder="А123ВС" class="pilov-input">
+            </div>
+            <div class="meta-group">
+                <label>📅 Дата</label>
+                <input type="date" id="pilovDate" class="pilov-input">
+            </div>
+        </div>
+        <div class="pilov-total">
+            <div class="total-box">
+                <span class="total-label">Всего бревен:</span>
+                <span class="total-value" id="pilovTotalCount">0</span>
+            </div>
+            <div class="total-box primary">
+                <span class="total-label">Общий объем:</span>
+                <span class="total-value" id="pilovTotalVolume">0.000</span>
+                <span class="total-unit">м³</span>
+            </div>
+            <button class="pilov-reset-btn" id="pilovReset">🔄 Сбросить</button>
+        </div>
+    </div>
+
+    <div class="pilov-table-wrapper">
+        <table class="pilov-table" id="pilovTable">
+            <thead>
+                <tr>
+                    <th>Диаметр (см)</th>
+                    <th>Объем (м³)</th>
+                    <th>Количество</th>
+                    <th>Итого (м³)</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="pilovTableBody">
+                <!-- Строки будут генерироваться через JS -->
+            </tbody>
+            <tfoot>
+                <tr class="pilov-total-row">
+                    <td colspan="2"><strong>ИТОГО:</strong></td>
+                    <td id="pilovFooterCount"><strong>0</strong></td>
+                    <td id="pilovFooterVolume"><strong>0.000</strong></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="pilov-actions">
+        <button class="pilov-export-btn" id="pilovExportCSV">📊 Экспорт CSV</button>
+        <button class="pilov-export-btn" id="pilovExportJSON">💾 Сохранить</button>
+        <button class="pilov-import-btn" id="pilovImportJSON">📂 Загрузить</button>
+        <input type="file" id="pilovFileInput" accept=".json" style="display: none;">
+    </div>
+</div>

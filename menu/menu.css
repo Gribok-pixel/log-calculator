@@ -1,0 +1,290 @@
+/* ============================================================
+   MENU BUTTON (бургер)
+   ============================================================ */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    /* background: rgb(124, 168, 209); */
+    border-radius: 2px;
+    /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.menu-toggle:active {
+    transform: scale(0.95);
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #1a2634;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+/* Анимация бургера в крестик */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* ============================================================
+   OVERLAY (затемнение)
+   ============================================================ */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================================
+   SIDE MENU (само меню)
+   ============================================================ */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 400px;
+    max-width: 90vw;
+    height: 100%;
+    background: white;
+    z-index: 1001;
+    box-shadow: -4px 0 30px rgba(0,0,0,0.15);
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+/* ============================================================
+   MENU HEADER
+   ============================================================ */
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f2f5;
+    margin-bottom: 20px;
+}
+
+.menu-header h2 {
+    font-size: 1.4rem;
+    color: #1a2634;
+    margin: 0;
+}
+
+.menu-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #f0f2f5;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a2634;
+}
+
+.menu-close:hover {
+    background: #e74c3c;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* ============================================================
+   MENU LIST
+   ============================================================ */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1a2634;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+    background: #f8f9fa;
+    border: 2px solid transparent;
+}
+
+.menu-link:hover {
+    background: #eef1f5;
+    border-color: #dde3ea;
+    transform: translateX(4px);
+}
+
+.menu-link:active {
+    transform: scale(0.98);
+}
+
+.menu-link.active {
+    background: #e3f2fd;
+    border-color: #4a90d9;
+}
+
+.menu-link.active .menu-icon {
+    color: #4a90d9;
+}
+
+.menu-link .menu-icon {
+    font-size: 1.4rem;
+    margin-right: 16px;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.menu-link .menu-text {
+    font-size: 1rem;
+    font-weight: 500;
+    flex: 1;
+}
+
+.menu-link .menu-badge {
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: #dde3ea;
+    color: #555;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.menu-link.active .menu-badge {
+    background: #4a90d9;
+    color: white;
+}
+
+/* ============================================================
+   MENU FOOTER
+   ============================================================ */
+.menu-footer {
+    padding-top: 20px;
+    border-top: 2px solid #f0f2f5;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.menu-version {
+    font-weight: 500;
+    color: #1a2634;
+}
+
+.menu-info {
+    color: #95a5a6;
+}
+
+/* ============================================================
+   АДАПТИВНОСТЬ
+   ============================================================ */
+@media (max-width: 768px) {
+    .menu-toggle {
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+    }
+    
+    .side-menu {
+        width: 100%;
+        max-width: 100vw;
+        padding: 16px;
+    }
+    
+    .menu-link {
+        padding: 14px 16px;
+    }
+    
+    .menu-link .menu-text {
+        font-size: 0.95rem;
+    }
+    
+    .menu-link .menu-badge {
+        font-size: 0.65rem;
+        padding: 2px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-toggle {
+        top: 4px;
+        right: 4px;
+        width: 46px;
+        height: 46px;
+        padding: 8px;
+    }
+    
+    .menu-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .menu-link {
+        padding: 12px 14px;
+    }
+    
+    .menu-link .menu-icon {
+        font-size: 1.2rem;
+        margin-right: 12px;
+        width: 28px;
+    }
+}

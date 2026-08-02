@@ -16,12 +16,19 @@ html, body {
 #app {
     width: 100%;
     height: 100%;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     /* padding: 20px; */
 }
 
+.container1 {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    height: 100%;
+    max-height: 900px;
+}
 .container {
     display: flex;
     gap: 8px;
@@ -35,13 +42,56 @@ html, body {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
 }
 
+
+
+/* По умолчанию все страницы скрыты */
+.page-content {
+    display: none !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Показываем только активную страницу */
+.page-content.active {
+    display: flex !important;
+}
+
+/* Специфичные стили для страниц */
+#page-rasp {
+    display: none;
+}
+
+#page-rasp.active {
+    display: flex;
+}
+
+#page-pilov {
+    display: none;
+}
+
+#page-pilov.active {
+    display: flex;
+}
+
+#page-raschet {
+    display: none;
+}
+
+#page-raschet.active {
+    display: flex;
+}
+
+
+
+
 /* Левая часть с кругом */
 .circle-wrapper {
     flex: 1;
     position: relative;
     background: #fafbfc;
     border-radius: 16px;
-    border: 1px solid #e9ecf0;
+    /* border: 1px solid #e9ecf0; */
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -74,7 +124,7 @@ html, body {
     display:grid;
     grid-template-columns:1fr 1fr;
 
-    gap:4px 20px;
+    gap:4px 0;
 
     padding:8px;
 
@@ -513,6 +563,10 @@ html, body {
 
 /* Адаптив */
 @media (max-width: 800px) {
+    .container1 {
+        flex-direction: column;
+        max-height: none;
+    }
     .container {
         flex-direction: column;
         max-height: none;
@@ -532,5 +586,146 @@ html, body {
     .board-item {
         flex: 1;
         min-width: 100%;
+    }
+}
+
+
+/* В styles.css или отдельном файле */
+.page-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #7f8c8d;
+    font-size: 1.2rem;
+}
+
+.page-placeholder h2 {
+    font-size: 2rem;
+    color: #1a2634;
+    margin-bottom: 10px;
+}
+
+.page-placeholder p {
+    color: #95a5a6;
+}
+
+/* Убедитесь, что контент не перекрывается меню */
+#app {
+    padding-right: 0;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+    .page-placeholder h2 {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+/* style.css - добавить в конец */
+
+/* Стили для печати PDF */
+@media print {
+    .page-content {
+        display: none !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        visibility: hidden !important;
+    }
+
+    /* ============================================================
+    3. ПОКАЗАТЬ ТОЛЬКО АКТИВНУЮ СТРАНИЦУ
+    ============================================================ */
+    .page-content.active {
+        display: block !important;
+        visibility: visible !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+    }
+
+    .menu-toggle,
+    .side-menu,
+    .menu-overlay,
+    .pilov-actions,
+    #pilovReset,
+    #pilovSave,
+    .menu-close,
+    .menu-header,
+    .menu-footer,
+    .menu-list,
+    .raschet-actions,
+    #raschetClearAll,
+    #raschetSavePDF,
+    .pilov-delete-btn,
+    .raschet-item .delete-btn,
+    .pilov-count-btn,
+    .raschet-item .count-btn {
+        display: none !important;
+    }
+    
+
+    #page-pilov,
+    #page-raschet {
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+    
+    .pilov-container,
+    .raschet-container {
+        padding: 10px !important;
+        border-radius: 0 !important;
+        min-height: 100vh !important;
+        overflow: visible !important;
+    }
+    
+    .pilov-table-wrapper,
+    .raschet-list-wrapper {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+        padding: 0 !important;
+    }
+
+    .pilov-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .pilov-table thead {
+        position: static !important;
+    }
+    
+    .pilov-table tfoot {
+        position: static !important;
+        display: table-row-group !important;
+    }
+
+    /* Убираем дублирование итогов */
+    .pilov-table tfoot tr {
+        page-break-before: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .pilov-table tbody tr {
+        page-break-inside: avoid !important;
+    }
+    
+    .pilov-row-empty {
+        opacity: 0.3 !important;
+    }
+    
+    .pilov-count-btn {
+        display: none !important;
+    }
+    
+    .pilov-delete-btn {
+        display: none !important;
     }
 }

@@ -1,0 +1,493 @@
+/* pilov/pilov.css */
+
+/* ============================================================
+   КОНТЕЙНЕР
+   ============================================================ */
+.pilov-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 12px 20px 16px 20px;
+    gap: 8px;
+    overflow: hidden;
+    background: white;
+    border-radius: 24px;
+}
+
+/* ============================================================
+   МЕТАДАННЫЕ - МИНИМАЛЬНАЯ ВЫСОТА
+   ============================================================ */
+.pilov-meta {
+    display: flex;
+    gap: 16px;
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    flex-shrink: 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.meta-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.pilov-input {
+    padding: 4px 10px;
+    border: 1.5px solid #e0e4e8;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    background: white;
+    color: #1a2634;
+    /* height: 30px; */
+    min-width: 100px;
+}
+
+.pilov-input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.1);
+}
+
+.pilov-input[type="date"] {
+    min-width: 130px;
+}
+
+/* Статистика в одной строке с метаданными */
+.pilov-stats {
+    display: flex;
+    gap: 12px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    background: white;
+    border-radius: 6px;
+    border: 1.5px solid #e0e4e8;
+    height: 30px;
+}
+
+.stat-box.primary {
+    background: #e3f2fd;
+    border-color: #4a90d9;
+}
+
+.stat-label {
+    font-size: 0.65rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1a2634;
+}
+
+.stat-box.primary .stat-value {
+    color: #4a90d9;
+}
+
+.stat-unit {
+    font-size: 0.65rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+/* ============================================================
+   ТАБЛИЦА - ОСНОВНАЯ ЧАСТЬ
+   ============================================================ */
+.pilov-table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: auto;
+    border-radius: 10px;
+    border: 1.5px solid #e9ecf0;
+    background: white;
+    min-height: 0;
+}
+
+.pilov-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.pilov-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.pilov-table thead tr {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecf0;
+}
+
+.pilov-table th {
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #1a2634;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    background: #f8f9fa;
+    white-space: nowrap;
+}
+
+.pilov-table tbody tr {
+    border-bottom: 2px solid #e9ecf0;
+}
+
+.pilov-table td {
+    padding: 4px 12px;
+    border-bottom: 1px solid #f0f2f5;
+    vertical-align: middle;
+}
+
+.pilov-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+/* ============================================================
+   ЯЧЕЙКИ
+   ============================================================ */
+.pilov-diameter {
+    font-weight: 600;
+    color: #1a2634;
+    font-size: 0.95rem;
+}
+
+.pilov-volume {
+    color: #7f8c8d;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95rem;
+}
+
+.pilov-count-cell {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.pilov-count-input {
+    width: 44px;
+    padding: 2px 4px;
+    border: 1.5px solid #e0e4e8;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: white;
+    height: 26px;
+}
+
+.pilov-count-input:focus {
+    outline: none;
+    border-color: #4a90d9;
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.1);
+}
+
+.pilov-count-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.pilov-count-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.pilov-count-btn {
+    width: 20px;
+    height: 16px;
+    border: none;
+    background: #f0f2f5;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: #1a2634;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.pilov-count-btn:hover {
+    background: #4a90d9;
+    color: white;
+}
+
+.pilov-count-btn:active {
+    transform: scale(0.9);
+}
+
+.pilov-total-cell {
+    font-weight: 600;
+    color: #4a90d9;
+    font-family: 'Courier New', monospace;
+}
+
+.pilov-delete-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pilov-delete-btn:hover {
+    background: #fee;
+    color: #e74c3c;
+}
+
+/* Строки с нулевым количеством */
+.pilov-row-empty {
+    opacity: 0.4;
+}
+
+.pilov-row-empty:hover {
+    opacity: 0.7;
+}
+
+.pilov-row-empty .pilov-total-cell {
+    color: #bbb !important;
+}
+
+/* ============================================================
+   ПОДВАЛ ТАБЛИЦЫ
+   ============================================================ */
+.pilov-table tfoot tr {
+    background: #f8f9fa;
+    border-top: 2px solid #4a90d9;
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+}
+
+.pilov-table tfoot td {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    background: #f8f9fa;
+}
+
+#pilovFooterCount {
+    color: #1a2634;
+    font-weight: 700;
+}
+
+#pilovFooterVolume {
+    color: #4a90d9;
+    font-weight: 700;
+}
+
+/* ============================================================
+   КНОПКИ - МИНИМАЛЬНАЯ ВЫСОТА
+   ============================================================ */
+.pilov-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    margin-bottom: 50px;
+}
+
+.pilov-action-btn {
+    padding: 4px 14px;
+    border: 1.5px solid #e0e4e8;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: white;
+    color: #1a2634;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pilov-action-btn:hover {
+    background: #f0f2f5;
+    border-color: #b8c8dd;
+}
+
+.pilov-action-btn:active {
+    transform: scale(0.95);
+}
+
+.pilov-action-btn.primary {
+    background: #4a90d9;
+    color: white;
+    border-color: #4a90d9;
+}
+
+.pilov-action-btn.primary:hover {
+    background: #357abd;
+    border-color: #357abd;
+}
+
+.pilov-action-btn.danger {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.pilov-action-btn.danger:hover {
+    background: #c0392b;
+    border-color: #c0392b;
+}
+
+/* ============================================================
+   СКРОЛЛБАР
+   ============================================================ */
+.pilov-table-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.pilov-table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.pilov-table-wrapper::-webkit-scrollbar-thumb {
+    background: #d0d5dd;
+    border-radius: 3px;
+}
+
+.pilov-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #b0b8c4;
+}
+
+/* ============================================================
+   АДАПТИВ
+   ============================================================ */
+@media (max-width: 768px) {
+    .pilov-container {
+        padding: 8px 12px;
+        border-radius: 16px;
+    }
+
+    .pilov-meta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        padding: 0;
+    }
+
+    .meta-group {
+        flex-wrap: wrap;
+    }
+
+    .meta-group label {
+        min-width: 60px;
+    }
+
+    .pilov-input {
+        flex: 1;
+        min-width: 80px;
+    }
+
+    .pilov-stats {
+        margin-left: 0;
+        justify-content: stretch;
+    }
+
+    .stat-box {
+        flex: 1;
+        justify-content: center;
+        height: 28px;
+        padding: 2px 8px;
+    }
+
+    .pilov-table {
+        font-size: 0.85rem;
+    }
+
+    .pilov-table th,
+    .pilov-table td {
+        padding: 2px 0px 2px 8px;
+    }
+
+    .pilov-count-input {
+        width: 36px;
+        font-size: 0.95rem;
+        height: 32px;
+    }
+
+    .pilov-count-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1.6rem;
+    }
+
+    .pilov-actions {
+        justify-content: stretch;
+    }
+
+    .pilov-action-btn {
+        flex: 1;
+        justify-content: center;
+        font-size: 0.7rem;
+        height: 28px;
+        padding: 2px 10px;
+    }
+}
+
+
+
+/* style.css - добавить в конец */
+
+/* Исправление для страницы пиловочник */
+#page-pilov {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+}
+
+#page-pilov .pilov-container {
+    height: 100vh;
+    max-height: 900px;
+    padding: 16px 24px;
+    overflow: hidden;
+}
+
+/* Для мобильных */
+@media (max-width: 768px) {
+    #page-pilov .pilov-container {
+        height: 100vh;
+        max-height: none;
+        padding: 12px;
+    }
+}
